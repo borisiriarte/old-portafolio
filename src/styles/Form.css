@@ -1,0 +1,120 @@
+.contact {
+  padding: 0 4rem;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact h3 {
+  width: 50%;
+  text-align: center;
+  /* font-size: clamp(1rem, 3vw, 3rem); */
+  letter-spacing: clamp(0.5rem, 1vw, 1.5rem);
+}
+
+
+.contact-form-container {
+  --form-ok-color: #4caf50;
+  --form-error-color: #f44336;
+  display: flex;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-form {
+  width: 100%;
+}
+
+.contact-form textarea {
+  resize: none;
+}
+
+.contact-form>* {
+  padding: 1rem;
+  margin: 1rem auto;
+  display: block;
+  width: 100%;
+}
+
+.contact-form input,
+.contact-form textarea {
+  height: 60px;
+  font-size: 1rem;
+  font-family: var(--secondary-font-family);
+  background-color: transparent;
+  border-radius: .5rem;
+  border: 1px solid white;
+  color: white;
+}
+
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder,
+.contact-form input[type="submit"] {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+
+.contact-form textarea {
+  height: 120px;
+}
+
+.contact-form input[type="submit"] {
+  width: 50%;
+  cursor: pointer;
+}
+
+.contact-form input[type="submit"]:hover {
+  background-color: rgb(177, 81, 77);
+  border: none;
+  color: white;
+}
+
+.contact-form input[type="submit"]:active {
+  background-color: rgb(145, 67, 65);
+  border: none;
+  color: white;
+}
+
+/* .contact-form [required]:valid {
+  border: thin solid var(--form-ok-color);
+}
+
+.contact-form [required]:invalid {
+  border: thin solid var(--form-error-color);
+} */
+
+@media (max-width: 1200px) {
+  .contact {
+    padding: 0;
+    flex-direction: column;
+  }
+
+  .contact h3,
+  .contact-form-container {
+    width: 80%;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    height: 40px;
+    font-size: 0.8rem;
+    border-radius: .5rem;
+    border: 0.5px solid white;
+    color: white;
+  }
+
+  .contact-form textarea {
+    height: 80px;
+  }
+
+  .contact-form>* {
+    padding: 0.5rem 1rem;
+    margin: 1rem auto;
+  }
+}

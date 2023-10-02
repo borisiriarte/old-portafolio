@@ -1,0 +1,550 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400&display=swap");
+
+@font-face {
+  font-family: "Equinox";
+  src: url("/src/assets/Equinox\ Bold.otf");
+}
+
+:root {
+  --background: linear-gradient(135deg, rgb(3, 25, 41) 0%, rgba(25, 56, 94, 0.3) 90%),
+    linear-gradient(-135deg, rgb(3, 25, 41) 0%, rgba(25, 56, 94, 0.3) 90%),
+    linear-gradient(360deg, rgb(247, 109, 67) 0%, rgba(31, 74, 105, 0.8) 50%);
+  --background-secondary: rgba(12, 21, 31, 0.3);
+  --main-font-family: "Equinox";
+  --secondary-font-family: "Montserrat", sans-serif;
+  --secondary1-font-family: "Raleway", sans-serif;
+}
+
+html {
+  min-width: 150px;
+  font-size: 16px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--background);
+  color: white;
+  font-family: var(--main-font-family);
+  /* overflow: hidden; */
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 5rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3.75vw, 4rem);
+}
+
+h3 {
+  font-size: clamp(1rem, 2.5vw, 3rem);
+}
+
+p {
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+}
+
+#backgroundContainer {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.l-letter {
+  letter-spacing: 0;
+}
+
+/*----------HEADER CSS----------*/
+
+header {
+  height: 5rem;
+  width: 100%;
+  top: 0;
+  position: fixed;
+  z-index: 999;
+  background: var(--background-secondary);
+}
+
+header h1 {
+  margin: 0;
+  padding: 0;
+  font-size: clamp(1.3rem, 2.6vw, 2.3rem);
+  /*Revisar*/
+  letter-spacing: 2px;
+}
+
+.inner-header {
+  height: 100%;
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inner-header a {
+  text-decoration: none;
+  color: white;
+}
+
+@media (max-width: 200px) {
+  .inner-header {
+    height: 100%;
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+/*___________________________________HEADER-END*/
+
+/*----------NAVBAR CSS----------*/
+.navbar {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-container li {
+  display: flex;
+  gap: 4rem;
+  list-style: none;
+}
+
+.navbar-container a {
+  position: relative;
+  color: white;
+  font-size: clamp(0.8rem, 1.6vw, 1.2rem);
+  /*Revisar*/
+  text-align: center;
+  text-decoration: none;
+}
+
+.navbar-container a:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 2px;
+  /* background-color: #CF2034; */
+  background-color: white;
+  transform: scale(0);
+  transition: transform .3s cubic-bezier(0.11, 0.7, 0, 1);
+}
+
+.navbar-container a:hover::after {
+  transform: scale(1);
+}
+
+.navbar label,
+#nav-hamburger {
+  display: none;
+}
+
+/*35em*/
+@media (max-width: 800px) {
+  .navbar label {
+    position: absolute;
+    transform-origin: center;
+    display: inline-block;
+    color: rgb(255, 255, 255);
+    padding: 0;
+  }
+
+  .navbar {
+    position: relative;
+    background-color: transparent;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* cursor: pointer; */
+  }
+
+
+  .navbar-container {
+    display: none;
+  }
+
+  .navbar-container a:hover {
+    background: rgb(177, 81, 77);
+  }
+
+  .navbar input:checked~.navbar-container {
+    margin: 0;
+    padding: 0;
+    width: max(150px, 50vw);
+    height: calc(50vh - 5rem);
+    display: block;
+    top: 5rem;
+    right: 0;
+    position: fixed;
+    background: var(--background-secondary);
+    backdrop-filter: blur(100px);
+  }
+
+
+  .navbar input:checked~.navbar-container li {
+    position: absolute;
+    z-index: 99;
+    width: 100%;
+    height: 100%;
+    gap: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .navbar input:checked~.navbar-container a {
+    height: 25%;
+    font-size: clamp(0.8rem, 2.5vw, 2rem);
+    /*Revisar*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .navbar label[for="nav-hamburger"] {
+    font-size: 1.5rem;
+  }
+
+  .navbar:hover {
+    background-color: hsla(212, 26%, 23%, 0.4);
+    transition: background-color 0.3s ease-out;
+  }
+
+  .navbar:active {
+    background-color: hsla(212, 26%, 23%, 0.8);
+    transition: background-color 0.3s ease-out;
+  }
+}
+
+/*___________________________________NAVBAR-END*/
+
+/*----------HOME CSS----------*/
+.home {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home h1 {
+  --space: 50px;
+  color: white;
+  margin: 0;
+  /* font-size: clamp(1rem, 5vw, 7rem); */
+  letter-spacing: clamp(0.25rem, 3vw, 4rem);
+  /* cursor: default; */
+}
+
+.home h3 {
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+  font-weight: 300;
+  /* font-size: clamp(.5rem, 2vw, 2.5rem); */
+  font-family: var(--secondary-font-family);
+  letter-spacing: clamp(0.085, 2vw, 1rem);
+}
+
+@media (max-width: 350px) {
+
+  .home h1,
+  .home h3 {
+    margin: 0 1rem;
+  }
+}
+
+/*___________________________________HOME-END*/
+
+/*----------HOME CSS----------*/
+.about {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-container {
+  width: 80vw;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-container .cage1 {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+}
+
+.cage1 h2 {
+  color: white;
+  margin: 0 auto;
+  /* font-size: clamp(1rem, 5vw, 4rem); */
+  letter-spacing: clamp(0.1rem, 2vw, 1rem);
+}
+
+/* .about-container h3 {
+  margin: 0;
+  font-weight: 300;
+  font-size: clamp(1rem, 3vw, 3rem);
+  font-family: var(--secondary-font-family);
+} */
+
+.about-container p {
+  width: 50%;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: justify;
+  font-weight: 100;
+  font-family: var(--secondary-font-family);
+}
+
+@media (max-width: 800px) {
+  .about-container {
+    flex-direction: column;
+  }
+
+  .cage1 {
+    margin-bottom: 1rem;
+  }
+
+  .about-container p {
+    width: 100%;
+  }
+}
+
+/*___________________________________HOME-END*/
+
+/*----------PROJECTS CSS----------*/
+.projects {
+  top: 0;
+  position: absolute;
+  width: 100%;
+  padding-top: 6rem;
+  height: auto;
+}
+
+.projects-header,
+.projects-main {
+  margin: 0 auto;
+  margin-top: 1rem;
+  width: 80vw;
+}
+
+.projects-main {
+  height: 75vh;
+  overflow: auto;
+  overflow: overlay;
+}
+
+.projects-main::-webkit-scrollbar {
+  display: none;
+}
+
+.projects-header h3 {
+  text-align: center;
+  color: white;
+  margin: 0;
+  /* font-size: clamp(1rem, 5vw, 4rem); */
+  letter-spacing: clamp(1rem, 2vw, 3rem);
+}
+
+.projects-header h1 {
+  color: transparent;
+  text-align: center;
+  margin: 0;
+  font-weight: 300;
+  font-size: clamp(1rem, 3vw, 3rem);
+  -webkit-text-stroke: 1px white;
+  letter-spacing: clamp(1rem, 2vw, 3rem);
+}
+
+.project-main-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 18px;
+  column-gap: 18px;
+  overflow: auto;
+}
+
+.project-main-container img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
+@media (max-width: 735px) {
+
+  .projects-header,
+  .projects-main {
+    width: 100vw;
+  }
+
+  .project-main-container {
+    row-gap: 0.25vw;
+    column-gap: 0.25vw;
+  }
+}
+
+/*___________________________________PROJECTS-END*/
+
+/*----------xxx CSS----------*/
+.square {
+  background-color: #9dc292;
+  position: absolute;
+  margin: 150px auto;
+  height: 200px;
+  width: min(20vw, 300px);
+  border: medium solid #d9dee4;
+}
+
+/* La máxima anchura que va a tomar el elemento es de 300px una vez que se excedan los 1500px en la pantalla. Cuando la pantalla sea menor a 1500px el elemento va a tomar un valor del 20vw de la pantalla*/
+
+.square2 {
+  background-color: #2462ad;
+  position: absolute;
+  margin: 450px auto;
+  height: 200px;
+  width: max(300px, 20vw);
+  border: medium solid #a8bfda;
+}
+
+/* La mínima anchura que va a tomar el elemento es de 300px hasta antes que se excedan los 1500px en la pantalla. Cuando la pantalla sea mayor a 1500px el elemento va a tomar un valor del 20vw de la pantalla*/
+
+.square3 {
+  background-color: #8fad24;
+  position: absolute;
+  margin: 750px auto;
+  height: 200px;
+  width: 2vw;
+  border: medium solid #a8bfda;
+}
+
+.square4 {
+  margin-top: 1050px;
+  position: absolute;
+  font-size: clamp(1rem, 2vw, 5rem);
+}
+
+/* Cuando el viewport width es menor o igual al valor mínimo de la fuente; en este caso 16px o 1rem, el valor se mantiene en 16px o 1rem. Pero cuando el valor del 2vw excede al valor de mínimo de la fuente esta empieza a crecer hasta un valor máximo de 5rem*/
+/*16px , 2vw , 80px*/
+
+/*---------Background----------*/
+
+.starfield-container {
+  z-index: -1;
+  /* position: relative; */
+  /* width: 100%;
+  height: 100vh; */
+  /* overflow: hidden; */
+}
+
+#starField {
+  background-color: transparent;
+  perspective: 600px;
+  /* transform-origin: center; */
+  /* transform: translate3d(-200px, 20%, 20%) rotateX(-20deg) rotateZ(0deg); */
+}
+
+.star {
+  z-index: 1;
+  background-color: white;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.star1 {
+  z-index: -5;
+  position: absolute;
+  --mask: radial-gradient(20px at 10.5px 10.5px, #0000 60%, #000) -10.5px -10.5px;
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
+}
+
+.rotateR2L {
+  -webkit-animation: spinZ 800s infinite linear reverse;
+  animation: spinZ 200s infinite linear reverse;
+}
+
+.rotateL2R {
+  -webkit-animation: spinZ 1000s infinite linear;
+  animation: spinZ 200s infinite linear;
+}
+
+@keyframes spinZ {
+  0% {
+    -webkit-transform: rotateZ(0deg);
+    transform: rotateZ(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotateZ(360deg);
+    transform: rotateZ(360deg);
+  }
+}
+
+.unblur {
+  animation: 1s unblur;
+}
+
+@keyframes unblur {
+
+  100% {
+    filter: blur(0);
+    opacity: 1;
+    -webkit-text-stroke: 0px;
+  }
+
+  0% {
+    filter: blur(600px);
+    opacity: -5;
+    -webkit-text-stroke: 200px;
+  }
+}
+
+.starsBox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: .5;
+}
+
+.starsBox div {
+  display: inline-block;
+  /* width: auto; */
+  position: fixed;
+  border-radius: 50%;
+  transition: 100s linear;
+}
